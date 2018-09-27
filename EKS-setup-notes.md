@@ -13,18 +13,14 @@ A number of these steps need to be performed ONLY ONCE during setup on a particu
 
 ----- ONE TIME INSTALLATIONS ----
 1. General Prereqs
-   
-    a. **AWS account & tools** - create / configure
-    - AWS Account  (currently using lynnlangit's demo AWS account)
-    - AWS IAM user (currently using lynnlangit's demo IAM user)
-    - AWS cli 
-        - run `aws configure` to verify configuration for `--default` profile
-        - could use IAM user with use non-default (named) profile  
+    - **AWS account & tools** - create / configure
+        - AWS Account  (currently using lynnlangit's demo AWS account)
+        - AWS IAM user (currently using lynnlangit's demo IAM user)
+        - AWS cli 
+            - run `aws configure` to verify configuration for `--default` profile
+            - could use IAM user with use non-default (named) profile  
 
-    b. **Git** - install **git** or **GitHub Desktop**
-    - **pull GitHub Repos** `VariantSpark -k` and `VariantSpark`
-    - IMPORTANT: pull VS branch for Spark 2.3 on Jim's fork) repos from GitHub 
-
+    
 2. Service Prereqs (instructions for Mac/OSX)
     - **Homebrew** - install and update package manager
         - install homebrew (then `brew update` & then `brew upgrade`)
@@ -79,10 +75,7 @@ TIPS:
 
 ### 4. Verify kubernetes cluster
     --- First Time Only (below) ---
-    - from your terminal `cd`
-    - then `mkdir .kube`
-    - then `cd -`
-    - then `/Users/lynnlangit/Documents/GitHub/variantspark-k`
+    - then `mkdir ~/.kube`
     - then `cp infrastructure/tf/out/config ~/.kube`  
     --- First Time Only (above) ---
 
@@ -134,10 +127,7 @@ TIPS:
 
 ## Tear Down the Cluster
 
-- from the **Spark** open terminal window
-    - `kubectl delete -f notebook.yml` -> deletes the services (& pods)
-        - verify that this also deleted AWS NLB and AWS VPC
-- from **spark-k** open terminal window
+- from **spark** open terminal window
     - `terraform plan --destroy -out /tmp/tfplan` (verify no errors!)
     - `terraform apply /tmp/tfplan`
 - manually delete s3 buckets with data (optional)

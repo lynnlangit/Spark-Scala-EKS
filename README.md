@@ -1,20 +1,23 @@
-# Scala Spark Simple Docker Example
+# Scala Spark Docker Example
 
 This example shows:
 
 * A simple Spark/Scala ML example docker container
-* Can run locally
-* Can run on AWS EKS (Kubernetes) or Sagemaker
+* Can rbe un locally
+* Can be run on AWS EKS (Kubernetes) or Sagemaker & S3 (no EMR needed)
+
+----
 
 ## Updated Example Code
 
-Derived from: [SGD Linear Regression Example with Apache Spark](https://www.bmc.com/blogs/sgd-linear-regression-example-apache-spark/)
-by Walker Rowe published May 23, 2017.
-
-This example shows a basic linear regression example and has been modified to run as an app rather than in the
+Derived from these sources: 
+1. [SGD Linear Regression Example with Apache Spark](https://www.bmc.com/blogs/sgd-linear-regression-example-apache-spark/)
+by Walker Rowe published May 23, 2017.  
+2. The example shows a linear regression example and has been modified to run as an app rather than in the
 interactive shell. Update, new example: [Linear Regression](https://spark.apache.org/docs/2.1.0/ml-classification-regression.html#linear-regression) from Spark Documentation. The new example has been updated to add serialization/deserialization and a split between training and test data.
+ 3. Further reference [Predicting Breast Cancer Using Apache Spark Machine Learning Logistic Regression](https://mapr.com/blog/predicting-breast-cancer-using-apache-spark-machine-learning-logistic-regression/) by Carol McDonald published October 17, 2016.
 
-Further reference [Predicting Breast Cancer Using Apache Spark Machine Learning Logistic Regression](https://mapr.com/blog/predicting-breast-cancer-using-apache-spark-machine-learning-logistic-regression/) by Carol McDonald published October 17, 2016.
+ ----
 
 ## How to Run Locally
 
@@ -61,7 +64,7 @@ only showing top 20 rows
 18/04/17 15:15:56 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
 18/04/17 15:15:56 INFO SparkContext: Successfully stopped SparkContext
 ```
-
+---
 ## Run in Docker container
 
 Assuming we have a working local Docker installation execute `sbt docker:publishLocal` to create the Docker image.
@@ -93,6 +96,7 @@ java.lang.IllegalArgumentException: System memory 466092032 must be at least 471
       at FullModel.Main.main(Main.scala)
 
 ```
+----
 
 ## Setup Scala Project including Docker
 
@@ -156,3 +160,5 @@ by Jeroen Rosenberg published August 14, 2017
         based image.
         1. Finally we provide a file mapping which instructs the packaging system to include our data file in the staging
         directory that is later used to construct the image.<sup>[4](https://stackoverflow.com/a/29042110/36737)</sup>
+
+----
