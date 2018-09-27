@@ -1,0 +1,14 @@
+bin/spark-submit --master k8s://blue-rhom-io.eastus2.cloudapp.azure.com:443 \
+                 --deploy-mode cluster \
+                 --name copyData \
+                 --class io.timpark.CopyData \
+                 --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
+                 --conf spark.executor.instances=16 \
+                 --conf spark.copydata.containerpath=wasb://backups@locationdata.blob.core.windows.net \
+                 --conf spark.copydata.storageaccountkey=CY4pV657Aa/vOKCS48Q5ZpNnyjCmXolpmdqpq1fbpv+1rq2Y6BKK005f+Zg+7mK5ueSCD4Zy+Yrs+zirKHN1Kw== \
+                 --conf spark.copydata.storageaccount=locationdata \
+                 --conf spark.copydata.frompath=wasb://backups@locationdata.blob.core.windows.net/locations/1520447377 \
+                 --conf spark.copydata.topath=wasb://backups@locationdata.blob.core.windows.net/locations/test \
+                 --conf spark.kubernetes.container.image=timfpark/copy-data:latest \
+                 --jars http://central.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.2/hadoop-azure-2.7.2.jar,http://central.maven.org/maven2/com/microsoft/azure/azure-storage/3.1.0/azure-storage-3.1.0.jar,http://central.maven.org/maven2/com/databricks/spark-avro_2.11/4.0.0/spark-avro_2.11-4.0.0.jar \
+                 local:///opt/spark/jars/copy-data_2.11-0.1.0-SNAPSHOT.jar
