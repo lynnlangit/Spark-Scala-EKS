@@ -35,19 +35,13 @@ A number of these steps need to be performed ONLY ONCE during setup on a particu
         
         `sudo mv ./kubectl /usr/local/bin/kubectl`  
 
-        NOTE: Requires version 1.10+ (verify with kubectl version) - might have version conflict if older version installed (tip look at gcloud as well)  
+        `kubectl version` -> must be 1.10+  
 
-    - **Heptio** - Authentication for IAM - https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html to install Heptio (do NOT use Go-Get)
+    - **AWS-IAM-Authenticator( was called Heptio)** - Authentication for IAM - https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html to install Heptio (do NOT use Go-Get)
         - get it
         - set permission
         - set path
-        - verify install
-
-    It's important to verify the version of Kubernetes 1.10+, which is needed to interoperate with another requirement, which is to use Heptio/AWS IAM with EKS.  You should verify the following text after you run `kubectl version` :   
-     
-        `Client Version: version.Info{Major:"1", Minor:"11", GitVersion:"v1.11.0",   GitCommit:"91e7b4fd31fcd3d5f436da26c980becec37ceefe", GitTreeState:"clean", BuildDate:"2018-06-27T20:17:28Z", GoVersion:"go1.10.2", Compiler:"gc", Platform:"darwin/amd64"}`
-        `Server Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.3",   GitCommit:"2bba0127d85d5a46ab4b778548be28623b32d0b0", GitTreeState:"clean", BuildDate:"2018-05-28T20:13:43Z", GoVersion:"go1.9.3", Compiler:"gc", Platform:"linux/amd64"}`  
-
+        - verify install and version 
 -------
 
 ## To Setup a EKS cluster

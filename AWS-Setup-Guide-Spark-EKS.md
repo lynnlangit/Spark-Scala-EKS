@@ -353,7 +353,7 @@ There are currently two scripts to help you submit spark jobs, one which submits
 
 ## Task 8 - View results
 
-Terraform created a read/write bucket for spark jobs that starts with the prefix `variant-spark-k-storage` and ends with a timestamp.  Visit this bucket in the AWS web console and navigate to the `output` folder.
+Terraform created a read/write bucket for spark jobs that starts with the prefix `sagemaker-spark-scala-storage` and ends with a timestamp.  Visit this bucket in the AWS web console and navigate to the `output` folder.
 
 The spark job has serialized the linear regression model in parquet format to the `model` folder.
 
@@ -365,7 +365,7 @@ You may download the predictions and view them in a text editor.
 
 You can run more spark jobs as you like, when you are finished you can clean up the resources by following these steps:
 
-1. Empty the `variant-spark-k-storage` bucket.  Terraform will not delete a bucket with unmanaged objects in it.
+1. Empty the `sagemaker-spark-scala-storage` bucket.  Terraform will not delete a bucket with unmanaged objects in it.
 
     1. Select the bucket's row in the S3 web interface.
     1. Click `Empty bucket`
@@ -378,7 +378,7 @@ You can run more spark jobs as you like, when you are finished you can clean up 
 
     1. Run `./kops-delete.sh input`
 
-1. Empty the `variant-spark-k-state-store` bucket.
+1. Empty the `sagemaker-spark-scala-store` bucket.
 
 1. Remove the terraform resources.
 

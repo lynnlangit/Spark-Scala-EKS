@@ -5,6 +5,8 @@ This example shows:
 * A simple Spark/Scala ML example docker container
 * Can rbe un locally
 * Can be run on AWS EKS (Kubernetes) or Sagemaker & S3 (no EMR needed)
+* `AWS-Setup-Guide-Spark-EKS.md` lists setup steps for Spark on AWS EKS
+* `EKS-setup-notes.md` lists additional setup notes for Spark on AWS EKS
 
 ----
 
