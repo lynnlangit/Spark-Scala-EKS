@@ -1,10 +1,12 @@
-## VariantSpark-k Setup Process
+# Using AWS EKS (Kubernetes)
+
+## Setup Process
 
 A number of these steps need to be performed ONLY ONCE during setup on a particular client machine.  Also please verify that all objects are removed when you tear down a cluster.  
 
  - Plan for 2-3 hours for the **intial** set up and test.
  - Plan for 5-15 minutes to subsequent setup on same client machine.
- - Plan for for 3-4 minutes for small-sized VariantSpark job runs.
+ - Plan for for 3-4 minutes for small-sized SparkML job runs.
  - Plan for 20-30 minutes for cluster tear down.
 
  --- 
@@ -52,10 +54,9 @@ A number of these steps need to be performed ONLY ONCE during setup on a particu
 
 -------
 
-## To Setup a VariantSpark-k cluster
+## To Setup a EKS cluster
 
-We are running in `us-west-2` (Oregon).  AWS EKS is only available in `us-west-2` or `us-east-1` currently.   
-NOTE: When we tested on `us-east-1`, we got 'out of resources' errors messages from EKS.
+We are running in `us-west-2` (Oregon).  AWS EKS is only available in `us-west-2` or `us-east-1` currently.  NOTE: When we tested on `us-east-1`, we got 'out of resources' errors messages from EKS.
 
 ### 1. Prepare the S3 bucket     
 - create AWS s3 bucket in us-west-1 (should be in same region as cluster, currently using `us-west-2`,) note the bucket name - this will hold the Terraform state file  -> **1-time step**
@@ -100,28 +101,15 @@ TIPS:
     - **IMPORTANT** leave your terminal window open
     - **IMPORTANT** leave the Kubernetes dashboard (web page) open
 
-### 6. Add the Jupyter notebook service
 
- - open a NEW terminal from this location in your local VariantSpark 2.3 fork `.../kubernetes -> /Notebook` directory 
- - run `kubectl apply -f notebook.yml` - to create the notebook service
- - go to Kubernetes web dashboard 
- - wait for the new pod to turn green
  -----
 
-## Run the example VariantSpark-k Jupyter notebook  
-On the Kubernetes Dashboard
-#### 1. Login to Notebook Service
-- locate the login token for your notebook from the Kubernetes pod log
-- click the service external endpoint link for the notebook service
-    - copy token from URL in log
-    - paste the login token into the Jupyter notebook text box
-#### 2. Copy Example Notebook
- - go to source - kubernetes -> noteook - upload the notebook using the browser (Jupter) - one level below root (permissions error at top)
- - update the S3 bucket in the notebook (look in S3 for name - long name with date stamp in the bucket name...)
- #### 3. Add data to S3
+## Run the Kubernetes Dashboard
+
+#### 1. Add data to S3
  - naviage to your S3 bucket that was created during setup
  - upload data files for analysis 
-#### 4. Run VariantSpark analysis
+#### 2. Run Spark analysis
  - View your example notebook, read notebook and RUN  -or-
  - Update notebook lines 29 - 46 for customized job run 
  - View kubernetes dashboard - watch pods get created (red -> green)
@@ -134,7 +122,7 @@ On the Kubernetes Dashboard
     - Kill that pod
     - Wait for all pods in that job to terminate
  2. To connect to the Spark Dashboard
-    - Start a VariantSpark-k job run
+    - Start a Spark job run
     - Search for the pod which is the 'driver' on the Kubernetes dashboard
     - Proxy - `kubectl port-forward <driver-pod-name> 4040:4040`
     and LEAVE that terminal window open
@@ -146,10 +134,10 @@ On the Kubernetes Dashboard
 
 ## Tear Down the Cluster
 
-- from the **VariantSpark** open terminal window
+- from the **Spark** open terminal window
     - `kubectl delete -f notebook.yml` -> deletes the services (& pods)
         - verify that this also deleted AWS NLB and AWS VPC
-- from **variantspark-k** open terminal window
+- from **spark-k** open terminal window
     - `terraform plan --destroy -out /tmp/tfplan` (verify no errors!)
     - `terraform apply /tmp/tfplan`
 - manually delete s3 buckets with data (optional)

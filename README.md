@@ -2,25 +2,21 @@
 
 This example shows:
 
-* A simple Spark/Scala ML example
-* Run locally
-* Run in Docker container
+* A simple Spark/Scala ML example docker container
+* Can run locally
+* Can run on AWS EKS (Kubernetes) or Sagemaker
 
-## Example Code
+## Updated Example Code
 
-~~Derived from: [SGD Linear Regression Example with Apache Spark](https://www.bmc.com/blogs/sgd-linear-regression-example-apache-spark/)
-by Walker Rowe published May 23, 2017.~~
+Derived from: [SGD Linear Regression Example with Apache Spark](https://www.bmc.com/blogs/sgd-linear-regression-example-apache-spark/)
+by Walker Rowe published May 23, 2017.
 
-~~This example shows a basic linear regression example and has been modified to run as an app rather than in the
-interactive shell.~~
-
-Update, new example: [Linear Regression](https://spark.apache.org/docs/2.1.0/ml-classification-regression.html#linear-regression) from Spark Documentation
-
-The new example has been updated to add serialization/deserialization and a split between training and test data.
+This example shows a basic linear regression example and has been modified to run as an app rather than in the
+interactive shell. Update, new example: [Linear Regression](https://spark.apache.org/docs/2.1.0/ml-classification-regression.html#linear-regression) from Spark Documentation. The new example has been updated to add serialization/deserialization and a split between training and test data.
 
 Further reference [Predicting Breast Cancer Using Apache Spark Machine Learning Logistic Regression](https://mapr.com/blog/predicting-breast-cancer-using-apache-spark-machine-learning-logistic-regression/) by Carol McDonald published October 17, 2016.
 
-## Run Locally
+## How to Run Locally
 
 This is an sbt project.  Assuming we have a working scala and sbt, then execute `sbt run` from the project root.  In
 addition to the log4j output from spark, you should also see a few lines of output from our example:
