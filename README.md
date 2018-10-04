@@ -5,8 +5,8 @@ This example includes:
 * A Spark/Scala ML example docker container
 * Can be run locally (instructions below)
 * Can be run on AWS EKS (Kubernetes) & S3 (no EMR needed)
-    * `AWS-Setup-Guide-Spark-EKS.md`-  lists setup steps for Spark on AWS EKS
-    * `EKS-setup-notes.md` - lists additional setup notes for Spark on AWS EKS
+    * [`AWS-Setup-Guide-Spark-EKS.md`](https://github.com/lynnlangit/Spark-Scala-EKS/blob/master/AWS-Setup-Guide-Spark-EKS.md)-  lists setup steps for Spark on AWS EKS
+    * [`EKS-setup-notes.md`](https://github.com/lynnlangit/Spark-Scala-EKS/blob/master/EKS-setup-notes.md) - lists additional setup notes for Spark on AWS EKS
 
 ----
 
