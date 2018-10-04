@@ -1,5 +1,7 @@
 # How to run Spark on AWS using Kops and Kubernetes
 
+![EKS-Spark](/images/EKS-Spark-Scala.png)
+
 ## Table of Contents
 
 1. Prerequisites
